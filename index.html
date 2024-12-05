@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f8fc;
+        }
+
+        .parent {
+            display: grid;
+            grid-template-columns: 1fr 5fr 1fr;
+            position: absolute;
+            bottom: 0;
+            top: 109px;
+        }
+
+        header {
+            background-color: #004a80;
+            color: white;
+            grid-column: 1 / 4;
+
+            >div {
+                display: inline-flex;
+                justify-content: space-around;
+                width: 100%;
+                padding: 0.2rem;
+
+                >div:not(.epic) {
+                    display: inline;
+                    padding-top: 4px;
+                    grid-template-columns: 1fr 4fr 2fr;
+                }
+            }
+
+            .site-name {
+                display: inline-grid;
+                text-align: center;
+            }
+
+            .right-buttons > button {
+                color: white;
+                background-color: #177dc6;
+                border:none;
+                border-radius: 7px;
+                line-height: 1.2em;
+                padding: 8px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #46a9f0;
+                }
+            }
+
+            img {
+                height: 30px;
+            }
+
+            nav {
+                display: grid;
+                grid-template-columns: 1fr 4fr 2fr;
+
+                a {
+                    text-decoration: none;
+                    color: #004a80;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                div.left-nav {
+                    display: inline-block;
+                    background-color: white;
+                    grid-column: 1 / 2;
+                }
+
+                div.right-nav {
+                    background-color: white;
+                    grid-column: 3 / 4;
+                }
+
+                >ul {
+                    grid-column: 2 / 3;
+                    padding: 1rem;
+                    background-color: white;
+                    color: #004a80;
+                    margin: 0;
+                    padding-left: 1fr;
+
+                    >li {
+                        display: inline;
+                        padding: 1rem;
+                        list-style: none;
+                    }
+                }
+            }
+        }
+
+        .left-side {
+            grid-column: 1 / 2;
+            background-color: rgb(155, 199, 232);
+        }
+
+        .right-side {
+            grid-column: 3 / 4;
+            background-color: rgb(155, 199, 232);
+        }
+
+        main {
+            grid-column: 2 / 3;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+
+            div.main {
+                grid-column: 1 / 2;
+            }
+
+            h2 {
+                color: #000000;
+                padding: 20px;
+            }
+
+            aside {
+                background-color: rgb(216, 232, 244);
+                grid-column: 2 / 3;
+                padding: 6px 14px 10px 20px;
+            }
+        }
+
+        table {
+            width: 96%;
+            border-collapse: collapse;
+            text-align: left;
+            margin: 14px;
+
+            td:first-child,
+            th:first-child {
+                padding-left: 39px !important;
+            }
+
+            th {
+                padding: 20px 0 10px 15px !important;
+            }
+
+            tr {
+                &:first-child {
+                    background-color: rgba(255, 255, 255, 0);
+                    color: #004a80;
+
+                    th {
+                        padding: 20px 0 10px 20px;
+                    }
+                }
+
+                &:not(:first-child) {
+                    border: 2px solid #ddd;
+                    border-right: 3px solid #ddd;
+                    background-color: #ffffff;
+                    padding-left: 20px;
+
+                    td {
+                        padding: 15px;
+                    }
+                }
+            }
+
+            tr:last-child {
+                border-bottom: 4px solid #ddd;
+            }
+
+            a.download {
+                color: #004a80;
+                text-decoration: none;
+                font-size: 0.9em;
+                margin-left: 10px;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            a.download:before {
+                content: "\1F4E5";
+            }
+        }
+
+        div.footer {
+            text-align: center;
+
+            p {
+                margin: 16px;
+                margin-top:28px;
+                color: rgb(114, 114, 114)
+            }
+            
+            button {
+                margin: 16px;
+                color:#004a80;
+                background-color: white;
+                border-radius: 8px;
+                padding:10px;
+                font-size: 1.1em;
+                cursor: pointer;
+            }
+        }
+
+        .user-info {
+            border: 1px solid #a3a3a3;
+            display: inline-block;
+            margin-top: 4px;
+            margin-bottom: 2px;
+            padding: 3px;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #afd7ff;
+            }
+
+            .user-icon {
+                background-color: #2f79ae;
+                color: white;
+                border-radius: 50%;
+                width: 33px;
+                height: 33px;
+                display: inline-block;
+                text-align: center;
+                line-height: 33px;
+                margin-right: 10px;
+                font-size: 1.7em;
+            }
+
+            span {
+                color: #2f79ae;
+                font-size: 1.3em;
+                margin-left: 2px;
+                padding-right:20px;
+                vertical-align: text-bottom;
+            }
+        }
+
+        .bottom-fade {
+            pointer-events: none;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 70vh;
+            background: linear-gradient(to top, rgba(80, 80, 80, 0.5), rgb(80, 80, 80, 0) 30%);
+        }
+
+        .logo {
+            display: inline;
+            margin-bottom: 3px;
+            margin-left: 15%;
+            margin-right: 0px;
+            min-height: 3rem;
+            min-width: 3rem;
+            position: static;
+        }
+
+        h1 {
+            font-size: 1.5em;
+            margin: 0;
+            padding: 0;
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <div class="epic">
+                <img src="logo.svg" class="logo" alt="OCHIN MyChart">
+            </div>
+            <div class="site-name">
+                <h1>OCHIN MyChart</h1>
+            </div>
+            <div class="right-buttons">
+                <button type="button">&#127760;</button>
+                <button type="button">Log Out</button>
+            </div>
+        </div>
+        <nav>
+            <div class="left-nav"></div>
+            <ul>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Visits</a></li>
+                <li><a href="#">Messages</a></li>
+                <li><a href="#">Test Results</a></li>
+                <li><a href="#">Medications</a></li>
+            </ul>
+            <div class="right-nav">
+                <div class="user-info">
+                    <div class="user-icon">J</div>
+                    <span>Jamie</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="parent">
+        <div class="left-side"></div>
+        <main>
+            <div class="main">
+                <h2>Test Results</h2>
+                <table>
+                    <tr>
+                        <th>Test</th>
+                        <th>Ordered By</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr>
+                        <td>Comprehensive Metabolic Panel <a class="download" href="./Comprehensive_Metabolic_Panel.pdf" download="Comprehensive_Metabolic_Panel.pdf">Download</a></td>
+                        <td>James Crowder, DO</td>
+                        <td>Dec 01, 2024</td>
+                    </tr>
+                    <tr>
+                        <td>Lipid Panel <a class="download" href="./Lipid_Panel.pdf" download="Lipid_Panel.pdf">Download</a></td>
+                        <td>James Crowder, DO</td>
+                        <td>Dec 01, 2024</td>
+                    </tr>
+                    <tr>
+                        <td>CBC without Differential<a class="download" href="./CBC_without_Differential.pdf" download="CBC_without_Differential.pdf">Download</a></td>
+                        <td>Tabitha Conway, MD</td>
+                        <td>Dec 04, 2024</td>
+                    </tr>
+                </table>
+                <div class="footer">
+                    <p>There are no more test results available.</p>
+                    <button type="button">Back to the home page</button>
+                </div>
+            </div>
+            <aside>
+                <p>Here you can see your lab results, along with the person who asked for the lab test to be done. Click a row to view more details.</p>
+                <p>Please note that final test results will be available to you immediately in MyChart. This means that you may see results before your health provider has seen them.</p>
+            </aside>
+        </main>
+        <div class="right-side"></div>
+    </div>
+    <div class="bottom-fade"></div>
+</body>
+
+</html>
